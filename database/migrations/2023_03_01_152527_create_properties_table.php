@@ -1,0 +1,40 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('properties', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('project_name');
+            $table->double('commission_percentage');
+            $table->double('commission_amount');
+            $table->double('agent_commission_percentage');
+            $table->double('agent_commission_amount');
+            $table->double('leader_commission_percentage');
+            $table->double('leader_commission_amount');
+            $table->timestamps();
+            $table->softDeletes();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('properties');
+    }
+};
